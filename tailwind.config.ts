@@ -61,6 +61,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				roblox: {
+					blue: '#00A2FF',
+					orange: '#FF6B35',
+					dark: '#2D3748',
+					gray: '#F7FAFC',
 				}
 			},
 			borderRadius: {
