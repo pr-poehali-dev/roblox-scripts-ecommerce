@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
 
 const Header: React.FC = () => {
   const { getTotalItems } = useCart();
+  const { user, isAuthenticated, logout } = useAuth();
 
   return (
     <header className="bg-white shadow-md border-b-2 border-roblox-blue sticky top-0 z-50">
@@ -52,10 +54,31 @@ const Header: React.FC = () => {
               </Button>
             </Link>
 
-            <Button className="bg-roblox-blue hover:bg-roblox-blue/90 text-white">
-              <Icon name="User" size={16} className="mr-2" />
-              Войти
-            </Button>
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-2">
+                <Link to="/profile">
+                  <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Icon name="User" size={16} />
+                    <span className="hidden md:inline">{user?.username}</span>
+                  </Button>
+                </Link>
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={logout}
+                  className="text-gray-600 hover:text-roblox-blue"
+                >
+                  <Icon name="LogOut" size={16} />
+                </Button>
+              </div>
+            ) : (
+              <Link to="/login">
+                <Button className="bg-roblox-blue hover:bg-roblox-blue/90 text-white">
+                  <Icon name="User" size={16} className="mr-2" />
+                  Войти
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

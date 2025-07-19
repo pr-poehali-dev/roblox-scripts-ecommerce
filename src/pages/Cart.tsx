@@ -146,13 +146,15 @@ const Cart: React.FC = () => {
                   <span className="text-roblox-blue">{getTotalPrice()}₽</span>
                 </div>
 
-                <Button 
-                  size="lg" 
-                  className="w-full bg-roblox-orange hover:bg-roblox-orange/90 text-white text-lg"
-                >
-                  <Icon name="CreditCard" size={20} className="mr-2" />
-                  Оформить заказ
-                </Button>
+                <Link to="/checkout">
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-roblox-orange hover:bg-roblox-orange/90 text-white text-lg"
+                  >
+                    <Icon name="CreditCard" size={20} className="mr-2" />
+                    Оформить заказ
+                  </Button>
+                </Link>
 
                 <Button 
                   variant="outline" 
